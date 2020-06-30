@@ -1,0 +1,58 @@
+.list-group-item.active {
+}
+
+body {
+}
+
+.titlespin {
+
+	display: inline-block;
+	vertical-align: text-bottom;
+	-webkit-animation: spinner-border 3.75s linear 2;
+	animation: spinner-border 3.75s linear 2;
+}
+
+.btn-vote {
+
+	border: 1px solid;
+}
+
+@media (max-width:767px) {
+	.white_tint_jumbotron {
+
+		background-color: rgba(255, 255, 255, 0.53);
+	}
+}
+
+.headline {
+
+	margin-top: 0.25rem;
+	padding: 0.75rem 0.5rem;
+	border-style: solid;
+	border-color: #919191;
+	border-top: 1px solid #919191;
+	border-left: 1px solid #919191;
+	border-right: 1px solid #919191;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.article_image {
+
+	float: right;
+	float: right;
+	width: 33%;
+}
+
+.floatingbtn {
+
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 40px;
+	right: 40px;
+	color: #FFF;
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999;
+}
