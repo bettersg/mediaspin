@@ -6,12 +6,12 @@
                 'send_to_email' => true,
                 'save_to_post_type' => true,
                 'post_type' => 'article',
-                'captcha' => false,
+                'captcha' => true,
                 'captcha_key' => get_theme_mod( 'captcha_key' ),
                 'captcha_secret' => get_theme_mod( 'captcha_secret' )
         ) ); ?>
         <?php if( !$mailer->processed || $mailer->error) : ?>
-        <form action="#" method="post" onsubmit="event.stopImmediatePropagation();event.stopPropagation();">
+        <form action="/mediaspin/" method="post" onsubmit="event.stopImmediatePropagation();event.stopPropagation();">
 
         <div class="modal-content" id="article_form_mailer_id">
             <div class="modal-header">

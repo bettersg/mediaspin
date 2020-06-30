@@ -37,7 +37,7 @@
 
 
                 <?php endwhile; ?>
-                <?php wp_reset_postdata(); ?>
+                
                 <?php
                     $linked_articles_query_args = array(
                         'post__in' => PG_Helper::getRelationshipFieldValue( 'linked_articles' ) ?: array(''),
@@ -61,52 +61,10 @@
                                 <h6 class="text-uppercase"></h6>
                                 <?php the_content(); ?>
                                 <div class="clearfix"></div>
-                                <div class="card-footer">
-                                    <div style="margin-top: 15px;"> 
-                                        <label>
-                                            <?php _e( 'How biased do you think this article and headline are?', 'mediaspintheme' ); ?>
-                                        </label>
-                                        <div class="btn-group btn-group-sm d-flex text-center" role="group" aria-label="Small button group">
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Very Negative', 'mediaspintheme' ); ?>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Slightly -', 'mediaspintheme' ); ?>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Neutral', 'mediaspintheme' ); ?>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Slightly +', 'mediaspintheme' ); ?>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Very Positive', 'mediaspintheme' ); ?>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div style="margin-top: 15px;"> 
-                                        <label>
-                                            <?php _e( 'How much would you trust this article?', 'mediaspintheme' ); ?>
-                                        </label>
-                                        <div class="btn-group btn-group-sm d-flex text-center" role="group" aria-label="Small button group">
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Not at all', 'mediaspintheme' ); ?>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Slightly', 'mediaspintheme' ); ?> 
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Moderately', 'mediaspintheme' ); ?>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Quite a lot', 'mediaspintheme' ); ?>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-vote">
-                                                <?php _e( 'Totally', 'mediaspintheme' ); ?>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>                                         
+                                
+                                <?php get_template_part( 'ratingstemplate' ); ?> 
+                                       
+                                                                    
                             </div>
                         </div>
                     <?php endwhile; ?>
@@ -114,9 +72,7 @@
                 <?php else : ?>
                     <p><?php _e( 'Sorry, no posts matched your criteria.', 'mediaspintheme' ); ?></p>
                 <?php endif; ?>
-                <button type="submit" class="border-dark btn btn-block btn-outline-dark btn-primary font-weight-bold mt-2 text-light text-uppercase">
-                    <?php _e( 'SUBMIT SURVEY', 'mediaspintheme' ); ?>
-                </button>
+                
                 <div class="text-center">
                     <a class="btn btn-lg btn-warning ml-auto mr-auto" href="#" role="button" data-toggle="modal" data-target="#article_modal" style="text-transform: uppercase; margin: 1rem auto 2rem;"><?php _e( 'Add another article', 'mediaspintheme' ); ?> <i class="fa-lg fa-plus-circle fas text-primary"></i></a>
                 </div>
@@ -187,5 +143,7 @@
 
 
 <?php get_template_part( 'issuemodal' ); ?>
- 
+
+
+
 <?php get_footer(); ?>

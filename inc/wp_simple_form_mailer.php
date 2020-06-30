@@ -320,10 +320,7 @@ class PG_Article_Form_Mailer {
             
              
             $content1 = '[visual-link-preview type="external" url="'.esc_url($_POST['article1']) .'" image_id="-1" image_url="'. $og_image .'" title="'. $og_title  .'" summary="'. $og_summary. '" template="Simple"]';             
-    
-            $og_media_agency = 'test3'; // debug
-            $content1 = 'test2'; // debug
-
+        
             if($options['send_to_email']) {
                 $headers = 'From: '. $admin_email . "\r\n";
                 $emailed = wp_mail($options['email'], $options['title'], $text, $headers);
@@ -333,7 +330,7 @@ class PG_Article_Form_Mailer {
                     'post_title' => esc_url_raw($_POST['article1']),
                     'post_content' => $content1,
                     'post_type' => 'article',
-                    'post_status' => 'draft'   // if volume of submissions gets too high, convert this to published
+                    'post_status' => 'publish'   // if volume of submissions gets too high, convert this to published
                 ) )) {
                     $saved = true;
                     
@@ -548,7 +545,7 @@ class PG_Issue_Form_Mailer {
             $og_media_agency = $graph['_values']['site_name'] ; 
 
              
-            $content1 = '[visual-link-preview type="external" url="'.esc_url($_POST['article1']) .'" image_id="-1" image_url="'. $og_image .'" title="'. $og_title  .' summary="'. $og_summary. '" template="Simple"]'; 
+            $content1 = '[visual-link-preview type="external" url="'.esc_url($_POST['article1']) .'" image_id="-1" image_url="'. $og_image .'" title="'. $og_title  .'" summary="'. $og_summary. '" template="Simple"]'; 
             $issue_title = filter_var($_POST['issue_title'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);   
 
             if($options['send_to_email']) {
@@ -560,7 +557,7 @@ class PG_Issue_Form_Mailer {
                     'post_title' => $issue_title,
                     'post_content' => $html,
                     'post_type' => 'issue',
-                    'post_status' => 'draft'
+                    'post_status' => 'publish'
                 ) )) {
                     $saved = true;
                     // update_field('date', $options['issue_date'], $postID); // update ACF fields
@@ -569,7 +566,7 @@ class PG_Issue_Form_Mailer {
                         'post_title' => esc_url_raw($_POST['article1']),
                         'post_content' => $content1,
                         'post_type' => 'article',
-                        'post_status' => 'published'   // if volume of submissions gets too high, convert this to published
+                        'post_status' => 'publish'   // if volume of submissions gets too high, convert this to published
                     ) )) {
                         $saved = true;
                         $og_media_agency;
