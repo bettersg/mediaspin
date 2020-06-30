@@ -298,7 +298,8 @@ class PG_Article_Form_Mailer {
             $content1 = null;            
 
             // open graph data
-            $url = urlencode($_POST['article1']);
+    
+            $url = $_POST['article1'];
             $graph = OpenGraph::fetch($url);
             function dismount($object) {
                 $reflectionClass = new ReflectionClass(get_class($object));
@@ -308,16 +309,20 @@ class PG_Article_Form_Mailer {
                     $array[$property->getName()] = $property->getValue($object);
                     $property->setAccessible(false);
                 }
-                return $array;
+                return $array;                
             }
-            
+          
             $graph = dismount($graph);
             $og_title = $graph['_values']['title'];
             $og_summary = $graph['_values']['description'] ;
             $og_image =  $graph['_values']['image'] ; 
             $og_media_agency = $graph['_values']['site_name'] ; 
+            
              
             $content1 = '[visual-link-preview type="external" url="'.esc_url($_POST['article1']) .'" image_id="-1" image_url="'. $og_image .'" title="'. $og_title  .'" summary="'. $og_summary. '" template="Simple"]';             
+    
+            $og_media_agency = 'test3'; // debug
+            $content1 = 'test2'; // debug
 
             if($options['send_to_email']) {
                 $headers = 'From: '. $admin_email . "\r\n";
@@ -524,7 +529,7 @@ class PG_Issue_Form_Mailer {
             // open graph data
 
 
-            $url = urlencode($_POST['article1']);
+            $url = $_POST['article1'];
             $graph = OpenGraph::fetch($url);
             function dismount($object) {
                 $reflectionClass = new ReflectionClass(get_class($object));

@@ -188,5 +188,4 @@
 
 <?php get_template_part( 'issuemodal' ); ?>
  
-
 <?php get_footer(); ?>
