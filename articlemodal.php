@@ -1,6 +1,4 @@
-<?php if( $mailer->processed ) : ?>
-    <?php echo '<script>alert("'. $mailer->message. '");</script>'  ?>
-<?php endif; ?>   
+
 
     <div class="fade modal pg-show-modal" id="article_modal" tabindex="-1" role="dialog" aria-labelledby="article_modal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -53,4 +51,6 @@
        
     </div>
 </div>
-
+<?php if( $mailer->processed ) : ?>
+    <?php echo '<script>alert("'. $mailer->message. '");</script>'  ?>
+<?php endif; ?>   

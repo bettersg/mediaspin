@@ -1,7 +1,4 @@
 
-<?php if( $mailer->processed ) : ?>
-    <?php echo '<script>alert("'. $mailer->message. '");</script>'  ?>
-<?php endif; ?>   
 
 <div class="fade modal pg-show-modal" id="issue_modal" tabindex="-1" role="dialog" aria-labelledby="issue_modal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -63,3 +60,8 @@
     </div>
 </div>
  
+<?php if( $mailer->processed ) :  
+    echo '<script>alert("'. $mailer->message. '");</script>';  
+    header("Location:https://better.sg/mediaspin");    
+
+endif; ?>   
