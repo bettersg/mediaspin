@@ -1,5 +1,7 @@
 
-
+<?php if( $mailer->processed ) : ?>
+    <?php echo '<script>alert("'. $mailer->message. '");</script>'  ?>
+<?php endif; ?>   
 
 <div class="fade modal pg-show-modal" id="issue_modal" tabindex="-1" role="dialog" aria-labelledby="issue_modal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -13,7 +15,7 @@
             'captcha_key' => get_theme_mod( 'captcha_key' ),
             'captcha_secret' => get_theme_mod( 'captcha_secret' )
     ) ); ?>
-    <?php if( !$mailer->processed || $mailer->error) : ?>
+     
     <form action="#"  class="wordpress-ajax-form" method="post" onsubmit="event.stopImmediatePropagation();event.stopPropagation();">
 
         <div class="modal-content" id="issue_form_mailer_id">
@@ -57,9 +59,7 @@
             </div>
         </div>
     </form>
-    <?php endif; ?>
-    <?php if( $mailer->processed ) : ?>
-        <?php echo '<script>alert("'. $mailer->message. '"); header("Location:'. $_SERVER['PHP_SELF']. '");</script>'; ?>
-    <?php endif; ?>   
+  
     </div>
 </div>
+ 
