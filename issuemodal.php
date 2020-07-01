@@ -1,4 +1,6 @@
 
+
+
 <div class="fade modal pg-show-modal" id="issue_modal" tabindex="-1" role="dialog" aria-labelledby="issue_modal" aria-hidden="true">
     <div class="modal-dialog" role="document">
     <?php $mailer = new PG_Issue_Form_Mailer(); ?>
@@ -12,7 +14,7 @@
             'captcha_secret' => get_theme_mod( 'captcha_secret' )
     ) ); ?>
     <?php if( !$mailer->processed || $mailer->error) : ?>
-    <form action="/mediaspin/" method="post" onsubmit="event.stopImmediatePropagation();event.stopPropagation();">
+    <form action="#"  class="wordpress-ajax-form" method="post" onsubmit="event.stopImmediatePropagation();event.stopPropagation();">
 
         <div class="modal-content" id="issue_form_mailer_id">
             <div class="modal-header">

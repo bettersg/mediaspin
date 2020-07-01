@@ -11,7 +11,7 @@
                 'captcha_secret' => get_theme_mod( 'captcha_secret' )
         ) ); ?>
         <?php if( !$mailer->processed || $mailer->error) : ?>
-        <form action="/mediaspin/" method="post" onsubmit="event.stopImmediatePropagation();event.stopPropagation();">
+        <form action="#" class="wordpress-ajax-form" method="post" onsubmit="event.stopImmediatePropagation();event.stopPropagation();">
 
         <div class="modal-content" id="article_form_mailer_id">
             <div class="modal-header">

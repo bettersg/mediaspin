@@ -1,13 +1,8 @@
 <?php get_header( 'jumbotron4' ); ?>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron jumbotron-fluid" style="background-position: right top; background-size: contain; background-repeat: no-repeat; background-color: #ffffff; background-clip: border-box; background-image: url('<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/undraw_online_articles_79ff.png');">
-    <div class="container white_tint_jumbotron">
-        <h1 class="display-3 font-weight-bold text-primary titlespin"><?php echo get_theme_mod( 'page_title', __( 'SG Media Spin', 'mediaspintheme' ) ); ?></h1>
-        <p class="font-weight-bolder"><?php echo get_theme_mod( 'page_desc', __( 'How different websites report the same thing.', 'mediaspintheme' ) ); ?></p>
-        <a class="btn btn-primary" href="<?php echo esc_url( get_page_link( PG_Helper::getPostFromSlug( 'about', 'page' ) ) ); ?>" role="button"><?php _e( 'Learn more »', 'mediaspintheme' ); ?></a>
-    </div>
-</div>
+<?php get_template_part( 'jumbotron' ); ?>  
+
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
@@ -21,7 +16,7 @@
 <p> If PM Lee goes for a walk in the park, a mainstream media source might report it as “PM Lee leads the fight against diabetes by taking walks”, while an alternative media source might choose a more sensational headline such as “EXPOSED: PM Lee’s private life in pictures”. The way media sources spin an issue can shape our views, so at <a href="https://better.sg">better.sg</a> (a techforgood collective), we decided to build this tool, SG Media Spin, to help you compare spins from various sources at a glance. <br/> SG Media Spin lets you catalogue a new issue that is trending online, or contribute links to other issues that are already on our page. That way, everyone can clearly see the reporting style of each source, to form a more comprehensive picture of an issue in our minds. </p>
 
 <p class="text-primary font-weight-bold">SG Media Spin is an independent, non-profit, and non-partisan effort, where the only aim is to help Singaporeans consume information more critically.</p>
-
+<small>The content on this site is all user-submitted with only minimal moderation. We do not condone or endorse any of the articles that are posted here by users, as the primary purpose of this site is to allow users to understand the contrast and biases of various news agencies.</small>
             
         </div>
     </div>

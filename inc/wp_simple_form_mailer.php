@@ -311,10 +311,20 @@ class PG_Article_Form_Mailer {
                 }
                 return $array;                
             }
-          
+            function clean($string) {
+                $string = str_replace('[', '(', $string); // Replaces all braces
+                $string = str_replace(']', ')', $string); // Replaces all braces
+                $string = str_replace('"', '`' , $string); // Replaces all quotes 
+             
+                return $string; // Replaces multiple hyphens with single one.
+             }
+
             $graph = dismount($graph);
-            $og_title = $graph['_values']['title'];
-            $og_summary = $graph['_values']['description'] ;
+            $og_title = clean($graph['_values']['title']);
+            if (empty($og_title)) {
+                $og_title = parse_url($url, PHP_URL_HOST);
+            }
+            $og_summary = clean($graph['_values']['description']) ;
             $og_image =  $graph['_values']['image'] ; 
             $og_media_agency = $graph['_values']['site_name'] ; 
             
@@ -538,12 +548,21 @@ class PG_Issue_Form_Mailer {
                 }
                 return $array;
             }
+            function clean($string) {
+                $string = str_replace('[', '(', $string); // Replaces all spaces with hyphens.
+                $string = str_replace(']', ')', $string); // Replaces all spaces with hyphens.
+                $string = str_replace('"', '`' , $string); // Replaces all spaces with hyphens.
+             
+                return $string; // Replaces multiple hyphens with single one.
+             }
+
             $graph = dismount($graph);
-            $og_title = $graph['_values']['title'];
-            $og_summary = $graph['_values']['description'] ;
+            $og_title = clean($graph['_values']['title']);
+            $og_summary = clean($graph['_values']['description']) ;
             $og_image =  $graph['_values']['image'] ; 
             $og_media_agency = $graph['_values']['site_name'] ; 
-
+            
+            
              
             $content1 = '[visual-link-preview type="external" url="'.esc_url($_POST['article1']) .'" image_id="-1" image_url="'. $og_image .'" title="'. $og_title  .'" summary="'. $og_summary. '" template="Simple"]'; 
             $issue_title = filter_var($_POST['issue_title'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);   
