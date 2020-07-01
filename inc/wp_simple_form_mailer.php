@@ -320,14 +320,21 @@ class PG_Article_Form_Mailer {
              }
 
             $graph = dismount($graph);
-            $og_title = clean($graph['_values']['title']);
-            if (empty($og_title)) {
+            if (!empty($graph['_values']['title'])) { 
+                $og_title = clean($graph['_values']['title']); 
+            }
+            else {
                 $og_title = parse_url($url, PHP_URL_HOST);
             }
-            $og_summary = clean($graph['_values']['description']) ;
-            $og_image =  $graph['_values']['image'] ; 
-            $og_media_agency = $graph['_values']['site_name'] ; 
-            
+            if (!empty($graph['_values']['description'])) { 
+                $og_summary = clean($graph['_values']['description']) ;
+            }
+            if (!empty($graph['_values']['image'])) {             
+                $og_image =  $graph['_values']['image'] ; 
+            }
+            if (!empty($graph['_values']['site_name'])) { 
+                $og_media_agency = $graph['_values']['site_name'] ; 
+            }
              
             $content1 = '[visual-link-preview type="external" url="'.esc_url($_POST['article1']) .'" image_id="-1" image_url="'. $og_image .'" title="'. $og_title  .'" summary="'. $og_summary. '" template="Simple"]';             
         
@@ -557,10 +564,21 @@ class PG_Issue_Form_Mailer {
              }
 
             $graph = dismount($graph);
-            $og_title = clean($graph['_values']['title']);
-            $og_summary = clean($graph['_values']['description']) ;
-            $og_image =  $graph['_values']['image'] ; 
-            $og_media_agency = $graph['_values']['site_name'] ; 
+            if (!empty($graph['_values']['title'])) { 
+                $og_title = clean($graph['_values']['title']); 
+            }
+            else {
+                $og_title = parse_url($url, PHP_URL_HOST);
+            }
+            if (!empty($graph['_values']['description'])) { 
+                $og_summary = clean($graph['_values']['description']) ;
+            }
+            if (!empty($graph['_values']['image'])) {             
+                $og_image =  $graph['_values']['image'] ; 
+            }
+            if (!empty($graph['_values']['site_name'])) { 
+                $og_media_agency = $graph['_values']['site_name'] ; 
+            }
             
             
              

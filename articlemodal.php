@@ -46,8 +46,10 @@
         </form>
             
         <?php endif; ?>
-        <?php if( $mailer->processed ) : ?>
-            <?php echo '<script>alert("'. $mailer->message. '");</script>'; ?>
-        <?php endif; ?>
+       
     </div>
 </div>
+
+<?php if( $mailer->processed ) : ?>
+    <?php  echo  $mailer->message;  ?>
+<?php endif; ?>

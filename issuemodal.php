@@ -59,7 +59,7 @@
     </form>
     <?php endif; ?>
     <?php if( $mailer->processed ) : ?>
-        <?php echo '<script>alert("'. $mailer->message. '");</script>'; ?>
+        <?php echo '<script>alert("'. $mailer->message. '"); header("Location:'. $_SERVER['PHP_SELF']. '");</script>'; ?>
     <?php endif; ?>   
     </div>
 </div>
