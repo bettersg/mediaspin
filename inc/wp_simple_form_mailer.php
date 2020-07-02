@@ -311,6 +311,7 @@ class PG_Article_Form_Mailer {
                 }
                 return $array;                
             }
+
             function clean($string) {
                 $string = str_replace('[', '(', $string); // Replaces all braces
                 $string = str_replace(']', ')', $string); // Replaces all braces
@@ -318,6 +319,15 @@ class PG_Article_Form_Mailer {
              
                 return $string; // Replaces multiple hyphens with single one.
              }
+
+             function limit_text($text, $limit) {  // shortens the string to x words
+                if (str_word_count($text, 0) > $limit) {
+                    $words = str_word_count($text, 2);
+                    $pos = array_keys($words);
+                    $text = substr($text, 0, $pos[$limit]) . '...';
+                }
+                return $text;  // shortens the string to x words
+            } 
 
             $graph = dismount($graph);
             if (!empty($graph['_values']['title'])) { 
@@ -327,7 +337,7 @@ class PG_Article_Form_Mailer {
                 $og_title = parse_url($url, PHP_URL_HOST);
             }
             if (!empty($graph['_values']['description'])) { 
-                $og_summary = clean($graph['_values']['description']) ;
+                $og_summary = limit_text(clean($graph['_values']['description']),35) ;
             }
             if (!empty($graph['_values']['image'])) {             
                 $og_image =  $graph['_values']['image'] ; 
@@ -545,7 +555,7 @@ class PG_Issue_Form_Mailer {
 
             $url = $_POST['article1'];
             $graph = OpenGraph::fetch($url);
-            function dismount($object) {
+            function dismount($object) {  // breaks up an object into an array
                 $reflectionClass = new ReflectionClass(get_class($object));
                 $array = array();
                 foreach ($reflectionClass->getProperties() as $property) {
@@ -555,13 +565,23 @@ class PG_Issue_Form_Mailer {
                 }
                 return $array;
             }
+
             function clean($string) {
-                $string = str_replace('[', '(', $string); // Replaces all spaces with hyphens.
-                $string = str_replace(']', ')', $string); // Replaces all spaces with hyphens.
-                $string = str_replace('"', '`' , $string); // Replaces all spaces with hyphens.
+                $string = str_replace('[', '(', $string); // Replaces all [] with ().
+                $string = str_replace(']', ')', $string);  
+                $string = str_replace('"', '`' , $string); // Replaces all " with `
              
-                return $string; // Replaces multiple hyphens with single one.
+                return $string; // returns a clean string without shortcode braces or quotes
              }
+
+            function limit_text($text, $limit) {  // shortens the string to x words
+                if (str_word_count($text, 0) > $limit) {
+                    $words = str_word_count($text, 2);
+                    $pos = array_keys($words);
+                    $text = substr($text, 0, $pos[$limit]) . '...';
+                }
+                return $text;  // shortens the string to x words
+            } 
 
             $graph = dismount($graph);
             if (!empty($graph['_values']['title'])) { 
@@ -571,7 +591,7 @@ class PG_Issue_Form_Mailer {
                 $og_title = parse_url($url, PHP_URL_HOST);
             }
             if (!empty($graph['_values']['description'])) { 
-                $og_summary = clean($graph['_values']['description']) ;
+                $og_summary = limit_text(clean($graph['_values']['description']),35) ;  // limit to first 35 words, clean the description string
             }
             if (!empty($graph['_values']['image'])) {             
                 $og_image =  $graph['_values']['image'] ; 
