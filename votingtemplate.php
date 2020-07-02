@@ -3,7 +3,7 @@
         <label><?php _e( 'How biased do you think this article and headline are?', 'mediaspintheme' ); ?>
         </label>        
         <div class="btn-group btn-group-sm d-flex text-center" role="group" aria-label="Small button group">
-            <button type="button" class="btn btn-secondary btn-vote">
+            <button class="btn btn-secondary btn-vote">
                 <?php _e( 'Very Negative', 'mediaspintheme' ); ?>
             </button>
             <button type="button" class="btn btn-secondary btn-vote">
