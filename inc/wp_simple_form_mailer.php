@@ -333,9 +333,6 @@ class PG_Article_Form_Mailer {
             if (!empty($graph['_values']['title'])) { 
                 $og_title = limit_text(clean($graph['_values']['title']),18); 
             }
-            else {
-                $og_title = parse_url($url, PHP_URL_HOST);
-            }
             if (!empty($graph['_values']['description'])) { 
                 $og_summary = limit_text(clean($graph['_values']['description']),30) ;
             }
@@ -343,8 +340,11 @@ class PG_Article_Form_Mailer {
                 $og_image =  $graph['_values']['image'] ; 
             }
             if (!empty($graph['_values']['site_name'])) { 
-                $og_media_agency = $og_title = limit_text($graph['_values']['site_name'],5) ; 
-            }
+                $og_media_agency = limit_text($graph['_values']['site_name'],5) ; 
+            }                 
+                else {
+                    $og_media_agency = str_ireplace('www.', '', parse_url($url, PHP_URL_HOST));
+                }
              
             $content1 = '[visual-link-preview type="external" url="'.esc_url($_POST['article1']) .'" image_id="-1" image_url="'. $og_image .'" title="'. $og_title  .'" summary="'. $og_summary. '" template="Simple"]';             
         
@@ -587,9 +587,6 @@ class PG_Issue_Form_Mailer {
             if (!empty($graph['_values']['title'])) { 
                 $og_title = limit_text(clean($graph['_values']['title']),18); 
             }
-            else {
-                $og_title = parse_url($url, PHP_URL_HOST);
-            }
             if (!empty($graph['_values']['description'])) { 
                 $og_summary = limit_text(clean($graph['_values']['description']),30) ;
             }
@@ -597,8 +594,11 @@ class PG_Issue_Form_Mailer {
                 $og_image =  $graph['_values']['image'] ; 
             }
             if (!empty($graph['_values']['site_name'])) { 
-                $og_media_agency = $og_title = limit_text($graph['_values']['site_name'],5) ; 
-            }
+                $og_media_agency = limit_text($graph['_values']['site_name'],5) ; 
+            }                 
+                else {
+                    $og_media_agency = str_ireplace('www.', '', parse_url($url, PHP_URL_HOST));
+                }
             
              
             $content1 = '[visual-link-preview type="external" url="'.esc_url($_POST['article1']) .'" image_id="-1" image_url="'. $og_image .'" title="'. $og_title  .'" summary="'. $og_summary. '" template="Simple"]'; 
