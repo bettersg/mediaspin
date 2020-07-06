@@ -1,4 +1,4 @@
-<div class="list-group-item list-group-item-action vlp"> 
+<div class="list-group-item list-group-item-action vlp" style="overflow: hidden"> 
 	<a href="<?php echo $link->output_url(); ?>" target="_blank" >
 		<div class="bg-dark card text-white">
 			<?php if ( $link->image_id() ) : ?><?php echo $link->image( $size ); ?> <?php endif; // Image ID. ?>

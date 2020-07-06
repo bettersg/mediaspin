@@ -1,7 +1,13 @@
 .list-group-item.active {
 }
 
-body {
+.list-group-item { 
+	overflow: hidden;
+}
+ 
+.container { 
+	padding-left: 5px !important;
+	padding-right: 5px !important;
 }
 
 .titlespin {
@@ -12,9 +18,15 @@ body {
 	animation: spinner-border 3.75s linear 2;
 }
 
-.btn-vote {
+.btn-vote { 
+	padding-left: 1px !important;
+	border: 1px solid !important;	
+}
 
-	border: 1px solid !important;
+.btn-group-sm { 
+	font-size: 0.6rem !important;
+	margin-left: -5px !important;
+	margin-right: -5px !important;
 }
 
 button:disabled,

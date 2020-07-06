@@ -258,7 +258,7 @@ if ( ! function_exists( 'mediaspintheme_enqueue_scripts' ) ) :
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.css', false, null, 'all');
 
     wp_deregister_style( 'jumbotron' );
-    wp_enqueue_style( 'jumbotron', get_template_directory_uri() . '/jumbotron.css', false, null, 'all');
+    wp_enqueue_style( 'jumbotron', get_template_directory_uri() . '/jumbotron.css', array(), rand(111,9999), 'all' );
 
     wp_deregister_style( 'all' );
     wp_enqueue_style( 'all', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css', false, null, 'all');
