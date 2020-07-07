@@ -339,6 +339,9 @@ class PG_Article_Form_Mailer {
             if (!empty($graph['_values']['image'])) {             
                 $og_image =  $graph['_values']['image'] ; 
             }
+                else {
+                    $og_image = 'https://better.sg/mediaspin/wp-content/uploads/2020/07/photo1580438816309.jpeg';
+                }
             if (!empty($graph['_values']['site_name'])) { 
                 $og_media_agency = limit_text($graph['_values']['site_name'],5) ; 
             }                 
@@ -593,6 +596,9 @@ class PG_Issue_Form_Mailer {
             if (!empty($graph['_values']['image'])) {             
                 $og_image =  $graph['_values']['image'] ; 
             }
+                else {
+                    $og_image = 'https://better.sg/mediaspin/wp-content/uploads/2020/07/photo1580438816309.jpeg';
+                }
             if (!empty($graph['_values']['site_name'])) { 
                 $og_media_agency = limit_text($graph['_values']['site_name'],5) ; 
             }                 
@@ -613,7 +619,7 @@ class PG_Issue_Form_Mailer {
                     'post_title' => $issue_title,
                     'post_content' => $html,
                     'post_type' => 'issue',
-                    'post_status' => 'publish'
+                    'post_status' => 'draft'  // issues must be vetted first
                 ) )) {
                     $saved = true;
                     // update_field('date', $options['issue_date'], $postID); // update ACF fields
