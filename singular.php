@@ -25,11 +25,16 @@ get_header();
             <small class="font-weight-lighter small text-muted text-right"><?php the_time( get_option( 'date_format' ) ); ?></small>
             <hr class="clearfix float-none"> 
          
-                <div class="entry-content">
-                    <?php
-                        the_content();
-                        
-                    ?>
+                <div class="entry-content container row">
+                    <div class="col-md-7">
+                        <?php
+                            the_content();
+                            
+                        ?>
+                    </div>
+                    <div class="col-md-4 offset-md-1 ">
+                        <?php comments_template(); ?>
+                    </div>
                 </div><!-- .entry-content -->
             </article><!-- #post-## -->
 
@@ -38,11 +43,7 @@ get_header();
 
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 offset-sm-3 ">
-            <?php comments_template(); ?>
-        </div>
-    </div>
+ 
     <hr>
     <footer>
         <p class="text-center">&copy; <a href="https://better.sg" target="_blank"><?php _e( 'Better.sg', 'mediaspintheme' ); ?></a> <?php _e( '2020', 'mediaspintheme' ); ?></p>
